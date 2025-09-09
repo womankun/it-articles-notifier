@@ -2,10 +2,11 @@ import { ZennArticle } from "../types/ZennArticle.js";
 
 export const getYesterdayArticles = (data: any): ZennArticle[] => {
   const now = new Date();
+  now.setUTCHours(0, 0, 0, 0); // UTCの今日0時
+
   const yesterday = new Date(now);
-  now.setHours(0, 0, 0, 0); // 今日の0時
-  yesterday.setDate(yesterday.getDate() - 1); // 昨日の0時
-  
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1); // UTCの昨日0時
+
   const start = yesterday;
   const end = now;
 
