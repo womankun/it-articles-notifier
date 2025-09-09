@@ -12,7 +12,6 @@ export const sendDiscordNotification = async (article: ZennArticle, topicConfig:
   const payload = { 
     content: `<@${process.env.DISCORD_USER_ID}>\n${message}`,
     username: `${topicConfig.watcherName} Watcher`,
-    avatar_url: "https://zenn.dev/images/logo.png", // 任意
   };
   
   const res = await fetch(webhookUrl, {
