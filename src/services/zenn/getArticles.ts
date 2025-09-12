@@ -1,6 +1,6 @@
 import { TopicConfig } from "./topicConfig.ts";
 import { MissingArticlesError } from "../../errors/MissingfArticlesError.ts";
-import { ZennArticle } from "../../types/ZennArticle.ts";
+import { ZennArticle } from "./types.ts";
 import { getYesterdayRangeUTC } from "../../utils/dateRange.ts";
 import { fetchWithTimeout } from "../../infra/http.ts";
 import { filterArticlesByDateRange } from "../../utils/filterArticlesByDateRange.ts";

@@ -1,18 +1,19 @@
-# Zenn Discord Watcher
+# ARTICLE-WATCHER
 
-Zennの特定トピック記事を取得し、Discordに通知するBotです。
+Zenn・Qiitaなどの技術記事を定期取得し、Discordに通知するBotです。
 
-## 機能
-- Zenn APIから記事取得
-- 昨日公開された記事のみ抽出
-- Discord Webhookで通知
-- タイムアウト＆再試行対応
+## ディレクトリ構成
+
+- `services/`：サービスごとのロジック（記事取得・通知・設定・型）
+- `core/`：サービス横断の共通処理（ServiceHandler定義・登録）
+- `infra/`：外部連携（Discord通知など）
+- `utils/`：汎用ロジック（fetch, date, error）
+- `__tests__/`：テストコードとフィクスチャ
 
 ## 環境変数
-- `DISCORD_WEBHOOK_URL`
-- `DISCORD_USER_ID`
 
-## 実行方法
-```bash
-npm install
-npm run start
+```env
+DISCORD_WEBHOOK_URL_ZENN=...
+DISCORD_WEBHOOK_URL_QIITA=...
+DISCORD_USER_ID=...
+QIITA_ACCESS_TOKEN=...

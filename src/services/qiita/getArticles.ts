@@ -1,5 +1,5 @@
 import { TopicConfig } from "./topicConfig.ts";
-import { QiitaArticle } from "../../types/QiitaArticle.ts";
+import { QiitaArticle } from "./types.ts";
 import { filterArticlesByDateRange } from "../../utils/filterArticlesByDateRange.ts";
 import { getYesterdayRangeJST } from "../../utils/dateRange.ts";
 import { MissingArticlesError } from "../../errors/MissingfArticlesError.ts";
