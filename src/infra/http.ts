@@ -1,14 +1,20 @@
 export const fetchWithTimeout = async (
   url: string,
-  timeoutMs = 10000,
-  retryCount = 3
+  init: RequestInit = {},
+  options?: { timeoutMs?: number; retryCount?: number }
 ): Promise<ReturnType<typeof fetch>> => {
+  const timeoutMs = options?.timeoutMs ?? 10000;
+  const retryCount = options?.retryCount ?? 3;
+
   for (let attempt = 0; attempt <= retryCount; attempt++) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
-      const res = await fetch(url, { signal: controller.signal });
+      const res = await fetch(url, {
+        ...init,
+        signal: controller.signal 
+      });
       clearTimeout(timeout);
       return res;
     } catch (err: any) {
@@ -21,7 +27,9 @@ export const fetchWithTimeout = async (
         console.warn(`⚠️ タイムアウト。再試行中... (${attempt + 1}/${retryCount})`);
         continue;
       }
-
+      if (isLastAttempt) {
+        throw new Error("fetchWithTimeout: すべての再試行に失敗しました");
+      }
       throw err;
     }
   }

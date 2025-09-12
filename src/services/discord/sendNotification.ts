@@ -1,7 +1,7 @@
-import { TopicConfig } from "../config/TopicConfig.js";
-import { ZennArticle } from "../types/ZennArticle.js";
+import { TopicConfig } from "../../config/TopicConfig.ts";
+import { ZennArticle } from "../../types/ZennArticle.ts";
 
-export const sendDiscordNotification = async (article: ZennArticle, topicConfig: TopicConfig) => {
+export const sendNotification = async (article: ZennArticle, topicConfig: TopicConfig) => {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL || "";
   const message = `${article.emoji} ${article.title}
   👤 ${article.user.name} (@${article.user.username})
