@@ -4,7 +4,7 @@ name: Zenn Watcher
 on:
   push:
   schedule:
-    - cron: '30 23 * * *' # UTCなので日本時間12:00
+    - cron: '0 23 * * *' # UTCなので日本時間12:00
   workflow_dispatch:
 
 jobs:
