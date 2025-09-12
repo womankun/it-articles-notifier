@@ -4,4 +4,5 @@ export default {
   },
   testEnvironment: 'node',
   extensionsToTreatAsEsm: ['.ts'],
+  testPathIgnorePatterns: ["<rootDir>/src/utils/__tests__/fixtures/"],
 };

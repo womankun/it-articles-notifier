@@ -1,6 +1,9 @@
+import { MissingArticlesError } from "../errors/MissingfArticlesError.ts";
 import { ZennArticle } from "../types/ZennArticle.js";
 
 export const getYesterdayArticles = (data: any): ZennArticle[] => {
+  if (!data || !data.articles) throw new MissingArticlesError();
+ 
   const now = new Date();
   now.setUTCHours(0, 0, 0, 0); // UTCの今日0時
 
@@ -14,6 +17,5 @@ export const getYesterdayArticles = (data: any): ZennArticle[] => {
     const published = new Date(article.published_at);
     return published >= start && published < end;
   });
-
   return yesterdayArticles;
 }
