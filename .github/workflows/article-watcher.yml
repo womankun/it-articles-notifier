@@ -4,7 +4,7 @@ name: IT Article Watcher
 on:
   push:
   schedule:
-    - cron: '0 23 * * *' # UTCなので日本時間12:00
+    - cron: '0 23 * * 1-5' # UTCなので日本時間12:00
   workflow_dispatch:
 
 jobs:
